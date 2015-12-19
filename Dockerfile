@@ -8,7 +8,7 @@ RUN apt-get autoclean
 
 ADD https://s3.amazonaws.com/gitlist/gitlist-master.tar.gz /var/www/
 
-RUN cd /var/www; tar -zxvf gitlist-master.tar.gz
+RUN cd /var/www; tar -zxf gitlist-master.tar.gz
 RUN chmod -R 777 /var/www/gitlist
 RUN cd /var/www/gitlist/; mkdir cache; chmod 777 cache
 
