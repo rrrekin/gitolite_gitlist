@@ -13,14 +13,11 @@ RUN chmod -R 777 /var/www/gitlist
 RUN cd /var/www/gitlist/; mkdir cache; chmod 777 cache
 
 WORKDIR /var/www/gitlist/
-ADD config.ini /var/www/gitlist/
-ADD nginx.conf /etc/
+ADD config.ini /var/www/gitlist/config.ini
+ADD nginx.conf /etc/nginx.conf
 
-# Make sure that supervisor directory exists
-RUN mkdir -p /etc/supervisor/conf.d
-
-ADD sshd.conf /etc/supervisor/conf.d
-ADD www.conf /etc/supervisor/conf.d
+ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
+ADD www.conf /etc/supervisor/conf.d/www.conf
 ADD fastcgi.conf /etc/php5/fpm/pool.d/www.conf
 RUN rm /var/www/gitlist-master.tar.gz
 
